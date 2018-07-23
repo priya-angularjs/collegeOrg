@@ -1,17 +1,30 @@
+<<<<<<< HEAD
 //@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+=======
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+>>>>>>> 35a6b03a7891d30ee4099fa4dc2a3a1a52b8677c
 @import "~@angular/material/theming";
 @import "~primeng/resources/themes/omega/theme.css";
 @import "~primeng/resources/primeng.min.css";
 @include mat-core();
 $primary: mat-palette($mat-pink, 800);
+<<<<<<< HEAD
 $accent: mat-palette($mat-green, 600, 100, 800);
 $warn: mat-palette($mat-red, 600);
 $theme: mat-light-theme($primary, $accent, $warn);
 
+=======
+$accent: mat-palette($mat-light-blue, 600, 100, 800);
+$warn: mat-palette($mat-red, 600);
+$theme: mat-light-theme($primary, $accent, $warn);
+>>>>>>> 35a6b03a7891d30ee4099fa4dc2a3a1a52b8677c
 @include angular-material-theme($theme);
 
 .page-background{
   background: linear-gradient(to left, #546E7A 51%, #424242 100%);
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 35a6b03a7891d30ee4099fa4dc2a3a1a52b8677c
