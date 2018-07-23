@@ -8,17 +8,16 @@
 .facebook{
   background: #3b5998;
   color: white;
-  padding: 0px 30px;
 }
 .google{
   background: #c32f10;
   color: white;
-  padding: 0px 40px;
+/* margin-left: 20px;*/
 }
 .twitter{
   background: #00aced;
   color: white;
-  padding: 0px 40px;
+ /* margin-left: 10px;*/
 }
 @media (min-width: 768px) {
   .row-sm-offset div:first-child[class*="ui-g-"] {
@@ -63,5 +62,8 @@
 .title-color{
   color: #EEEEEE;
   font-family: serif;
+}
+.icon-size{
+  padding: 0 10px;
 }
 

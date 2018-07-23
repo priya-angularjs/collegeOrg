@@ -3,7 +3,7 @@
 @import "~primeng/resources/themes/omega/theme.css";
 @import "~primeng/resources/primeng.min.css";
 @include mat-core();
-$primary: mat-palette($mat-pink, 800);
+$primary: mat-palette($mat-cyan, 600);
 $accent: mat-palette($mat-green, 600, 100, 800);
 $warn: mat-palette($mat-red, 600);
 $theme: mat-light-theme($primary, $accent, $warn);
@@ -12,4 +12,11 @@ $theme: mat-light-theme($primary, $accent, $warn);
 .page-background{
   background: linear-gradient(to left, #546E7A 51%, #424242 100%);
 }
-
+.mat-drawer-container {
+  background: linear-gradient(to left, #546E7A 51%, #424242 100%);
+  color: #fafafa;
+}
+.mat-toolbar.mat-primary {
+  background: linear-gradient(to left, #4b575c 51%, #5b889c 100%);
+  color: white;
+}

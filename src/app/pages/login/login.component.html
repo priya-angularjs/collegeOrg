@@ -1,27 +1,49 @@
 <div>
   <mat-card class="login-card">
     <h2 align="center" class="title-color">Login to College App</h2>
-
+    <form [formGroup]="loginForm">
       <div class="form-container">
-        <mat-form-field>
-          <input matInput placeholder="Username">
-        </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Password">
-        </mat-form-field>
-          <button mat-raised-button color="primary">Login</button>
+          <mat-form-field>
+            <input matInput placeholder="Username" formControlName="userName">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="login(loginForm)">Login</button>
 
       </div>
-
+    </form>
     <div class="ui-g row-sm-offset loginOr">
       <span class="spanOr">or</span>
       <hr class="hrOr">
     </div>
     <div class="ui-g">
-      <div class="ui-g-4"> <button mat-raised-button class="facebook">Facebook</button></div>
-      <div class="ui-g-4"> <button mat-raised-button class="twitter">Twitter</button></div>
-      <div class="ui-g-4"> <button mat-raised-button class="google">Google+</button></div>
+      <div class="ui-g-6">
+        <div class="ui-g-3">
+          <button mat-mini-fab  class="facebook">
+            <i class="fa fa-facebook"></i>
+          </button>
+        </div>
+        <div class="ui-g-3">
+          <button mat-mini-fab class="twitter">
+            <i class="fa fa-twitter"></i>
+          </button>
+        </div>
+        <div class="ui-g-3">
+          <button mat-mini-fab class="google">
+            <i class="fa fa-google"></i>
+          </button>
+        </div>
+      </div>
+     <!-- <div class="ui-g-4"> <button mat-raised-button class="facebook"> <i class="fa fa-facebook icon-size"></i>Facebook</button></div>
+      <div class="ui-g-4"> <button mat-raised-button class="twitter"><i class="fa fa-twitter icon-size"></i>Twitter</button></div>
+      <div class="ui-g-4"> <button mat-raised-button class="google"><i class="fa fa-google icon-size"> </i>Google+</button></div>-->
+     <div class="ui-g-6">
+       <p class="title-color" routerLink="/home">Forgot Password ?</p>
+     </div>
+
     </div>
   </mat-card>
 </div>
