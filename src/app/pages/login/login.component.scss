@@ -4,6 +4,10 @@
   margin-right: auto;
   margin-top: 10%;
   background :#78909C;
+  //border-radius: 30px;
+}
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 1px 0px 0px -2px rgba(0, 0, 0, 0.23), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 20px 20px rgba(0, 0, 0, .12);
 }
 .facebook{
   background: #3b5998;
@@ -33,6 +37,7 @@
   margin-bottom: 1em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+
 }
 .login-card .loginOr .hrOr {
   background-color: #78909c;
@@ -60,7 +65,7 @@
   width: 100%;
 }
 .title-color{
-  color: #EEEEEE;
+  color: #59d5e4;
   font-family: serif;
 }
 .icon-size{
