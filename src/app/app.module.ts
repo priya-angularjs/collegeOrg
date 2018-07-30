@@ -20,30 +20,28 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
-import {
-  SocialLoginModule,
-  AuthServiceConfig,
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-  LinkedinLoginProvider
-} from 'angular-6-social-login';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
+import { StudentsComponent } from './students/students.component';
+import { StudentComponent } from './students/student/student.component';
+import { StudentListComponent } from './students/student-list/student-list.component';
 
-export function getAuthServiceConfigs() {
-  const config = new AuthServiceConfig(
-    [
-      {
-        id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider('Your-Facebook-app-id')
-      },
-      {
-        id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider('Your-Google-Client-Id')
-      },
-      {
-        id: LinkedinLoginProvider.PROVIDER_ID,
-        provider: new LinkedinLoginProvider('1098828800522-m2ig6bieilc3tpqvmlcpdvrpvn86q4ks.apps.googleusercontent.com')
-      },
-    ]);
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('341073860374-opdqq8mqc643b6os1jsa162a0soeqmgq.apps.googleusercontent.com')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('208823993117457')
+  },
+  {
+    id: LinkedInLoginProvider.PROVIDER_ID,
+    provider: new LinkedInLoginProvider('810ud7s2ys3631', true)
+  }
+]);
+
+export function provideConfig() {
   return config;
 }
 @NgModule({
@@ -51,7 +49,10 @@ export function getAuthServiceConfigs() {
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    MenuComponent
+    MenuComponent,
+    StudentsComponent,
+    StudentComponent,
+    StudentListComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +74,7 @@ export function getAuthServiceConfigs() {
   providers: [{provide: APP_CONFIG, useValue: AppConfig},
     {
       provide: AuthServiceConfig,
-      useFactory: getAuthServiceConfigs
+      useFactory: provideConfig
     }],
   bootstrap: [AppComponent]
 })

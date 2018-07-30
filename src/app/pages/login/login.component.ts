@@ -4,9 +4,7 @@ import {Router} from '@angular/router';
 import {
   AuthService,
   FacebookLoginProvider,
-  GoogleLoginProvider,
-  LinkedinLoginProvider
-} from 'angular-6-social-login';
+  GoogleLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, private route: Router,
-              private socialAuthService: AuthService) {
+              private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -29,13 +27,13 @@ export class LoginComponent implements OnInit {
   login(model: FormGroup) {
     console.log(model);
     if (model.value.userName === 'admin' && model.value.password === 'admin') {
-      this.route.navigate(['home']);
+      this.route.navigate(['home/dashboard']);
     } else {
       alert('Login Failed.Enter correct password');
     }
 
   }
-  public socialSignIn(socialPlatform: string) {
+ /* public socialSignIn(socialPlatform: string) {
     let socialPlatformProvider;
     if (socialPlatform === 'facebook') {
       socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
@@ -43,15 +41,32 @@ export class LoginComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     } else if (socialPlatform === 'linkedin') {
       socialPlatformProvider = LinkedinLoginProvider.PROVIDER_ID;
+      console.log('called');
     }
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform + 'sign in data : ' , userData);
+        this.route.navigate(['home/dashboard']);
         // Now sign-in with userData
         // ...
 
       }
     );
+  }*/
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithLinkedIn(): void {
+    this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID);
+  }
+
+  signOut(): void {
+    this.authService.signOut();
   }
 }

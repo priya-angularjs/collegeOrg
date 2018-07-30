@@ -22,17 +22,17 @@
     <div class="ui-g">
       <div class="ui-g-6">
         <div class="ui-g-3">
-          <button mat-mini-fab  class="facebook" (click)="socialSignIn('facebook')">
+          <button mat-mini-fab  class="facebook" (click)="signInWithFB()">
             <i class="fa fa-facebook"></i>
           </button>
         </div>
         <div class="ui-g-3">
-          <button mat-mini-fab class="twitter">
-            <i class="fa fa-twitter"></i>
+          <button mat-mini-fab class="linkedin" (click)="signInWithLinkedIn()">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
           </button>
         </div>
         <div class="ui-g-3">
-          <button mat-mini-fab class="google" (click)="socialSignIn('google')">
+          <button mat-mini-fab class="google" (click)="signInWithGoogle()">
             <i class="fa fa-google"></i>
           </button>
         </div>
