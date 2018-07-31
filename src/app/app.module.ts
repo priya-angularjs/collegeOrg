@@ -25,7 +25,9 @@ import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from
 import { StudentsComponent } from './students/students.component';
 import { StudentComponent } from './students/student/student.component';
 import { StudentListComponent } from './students/student-list/student-list.component';
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -35,10 +37,10 @@ const config = new AuthServiceConfig([
     id: FacebookLoginProvider.PROVIDER_ID,
     provider: new FacebookLoginProvider('208823993117457')
   },
-  {
+ /* {
     id: LinkedInLoginProvider.PROVIDER_ID,
-    provider: new LinkedInLoginProvider('810ud7s2ys3631', true)
-  }
+    provider: new LinkedInLoginProvider('81pifmxx32sd96', false)
+  }*/
 ]);
 
 export function provideConfig() {
@@ -69,7 +71,10 @@ export function provideConfig() {
     MatSidenavModule,
     MatToolbarModule,
     PanelMenuModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
+
   ],
   providers: [{provide: APP_CONFIG, useValue: AppConfig},
     {
