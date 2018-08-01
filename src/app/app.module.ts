@@ -72,7 +72,7 @@ export function provideConfig() {
     MatToolbarModule,
     PanelMenuModule,
     SocialLoginModule,
-    AngularFireModule,
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
 
   ],

@@ -1,0 +1,29 @@
+
+<mat-sidenav-container class="sidenavBar">
+  <mat-sidenav #sidenav mode="side">
+ <img src="assets/images/background-dark.jpg" class="avatar" alt="Avatar">
+    <div><h3 align="center" class="sidemenu-header">Web Developer</h3></div>
+    <p-panelMenu [model]="items" [multiple]="false"></p-panelMenu>
+   <!-- <button mat-raised-button color="primary" class="btn-block">Products</button>
+    <button mat-raised-button color="primary" class="btn-block">Wishing List</button>
+    <button mat-raised-button color="primary" class="btn-block">Settings</button>-->
+  </mat-sidenav>
+  <mat-sidenav-content><mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon></button>
+
+    <span class="example-spacer"></span>
+    <button mat-icon-button>
+      <mat-icon class="example-icon">favorite</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon class="example-icon">add_shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button (click)="signOut()">
+      <mat-icon class="example-icon">exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

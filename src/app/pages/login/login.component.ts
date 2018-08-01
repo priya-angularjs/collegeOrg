@@ -55,17 +55,20 @@ export class LoginComponent implements OnInit {
     );
   }*/
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((response) => {
+      this.route.navigate(['home/dashboard']);
+    });
   }
 
   signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((response) => {
+      this.route.navigate(['home/dashboard']);
+    });
 
-  signInWithLinkedIn(): void {
-    this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID);
+    /*  signInWithLinkedIn(): void {
+        this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID).then((response) => {
+      });*/
   }
-
   signOut(): void {
     this.authService.signOut();
   }
