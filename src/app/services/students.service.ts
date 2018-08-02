@@ -23,13 +23,18 @@ export class StudentsService {
     }
     this.studentList.push(student);
   }
-  updateStudent(student: Student) {
+  updateStudent(student) {
+    console.log(student);
     this.studentList.update(student.$key, {
-      name: student.name,
-      department: student.department,
-      gender: student.gender,
-      dob: student.dob,
-      age: student.age
+      name: student.updateName,
+      fatherName: student.updateFatherName,
+      dob: student.updateDob,
+      gender: student.updateGender,
+      idProof: student.updateIdProof,
+      mobileNo: student.updateMobileNo,
+      email: student.updateEmail,
+      address: student.updateAddress,
+      image: student.updateImage,
     });
   }
   deleteStudent($key: string) {

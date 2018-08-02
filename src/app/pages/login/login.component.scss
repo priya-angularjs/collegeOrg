@@ -3,7 +3,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
-  background :#78909C;
+  //background :#78909C;
   //border-radius: 30px;
 }
 .mat-card:not([class*=mat-elevation-z]) {
@@ -71,6 +71,7 @@
 .title-color{
   color: #59d5e4;
   font-family: serif;
+  font-weight: 700;
 }
 .icon-size{
   padding: 0 10px;

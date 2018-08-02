@@ -1,3 +1,172 @@
-<p>
-  student-list works!
-</p>
+<mat-card class="card-design">
+  <mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="studentList" class="mat-elevation-z8">
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+    <!--  <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>-->
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <!--<mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>-->
+    </td>
+  </ng-container>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.$key}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="fatherName">
+    <th mat-header-cell *matHeaderCellDef> Father's Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.fatherName}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="dob">
+    <th mat-header-cell *matHeaderCellDef> DOB </th>
+    <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+  </ng-container>
+  <ng-container matColumnDef="gender">
+    <th mat-header-cell *matHeaderCellDef> Gender </th>
+    <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+  </ng-container>
+  <ng-container matColumnDef="idProof">
+    <th mat-header-cell *matHeaderCellDef> Id Proof </th>
+    <td mat-cell *matCellDef="let element"> {{element.idProof}} </td>
+  </ng-container>
+  <ng-container matColumnDef="mobileNo">
+    <th mat-header-cell *matHeaderCellDef> Mobile No </th>
+    <td mat-cell *matCellDef="let element"> {{element.mobileNo}} </td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+  <ng-container matColumnDef="address">
+  <th mat-header-cell *matHeaderCellDef> Address </th>
+  <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+</ng-container>
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef> Image </th>
+    <td mat-cell *matCellDef="let element"> {{element.image}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selectRow(row)" [ngClass]="{'highlight': selectedRowIndex == row.$key}">
+  </tr>
+</table>
+</mat-card>
+
+<p-dialog header="Student List" [(visible)]="studentDialog" [modal]="true" [responsive]="true"
+          [maximizable]="true" [baseZIndex]="10000" appendTo="body">
+  <div>
+  <form [formGroup]="studentListForm">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group row hidden">
+          <label for="updateFatherName" class="col-sm-5 col-form-label">Father's Name</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="$key" formControlName="$key" >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="updateName" class="col-sm-5 col-form-label">Name</label>
+          <div class="col-sm-7">
+
+            <input type="text" class="form-control" id="updateName" formControlName="updateName" placeholder="Name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="updateFatherName" class="col-sm-5 col-form-label">Father's Name</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="updateFatherName"  formControlName="updateFatherName" placeholder="Father's Name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="updateDob" class="col-sm-5 col-form-label">DOB</label>
+          <div class="col-sm-7">
+            <input type="date" class="form-control" id="updateDob" formControlName="updateDob" placeholder="Date Of Birth">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="updateGender" class="col-sm-5 col-form-label">Gender</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="updateGender" formControlName="updateGender" placeholder="Gender">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="updateIdProof" class="col-sm-5 col-form-label">Id Proof</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="updateIdProof" formControlName="updateIdProof" placeholder="Name">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label for="updateMobileNo" class="col-sm-5 col-form-label">Mobile Number</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="updateMobileNo" formControlName="updateMobileNo" placeholder="Mobile Number">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="updateEmail" class="col-sm-5 col-form-label">Email Address</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="updateEmail" formControlName="updateEmail" placeholder="Email Address">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="updateAddress" class="col-sm-5 col-form-label">Address</label>
+          <div class="col-sm-7">
+            <textarea class="form-control" id="updateAddress" rows="3" formControlName="updateAddress" placeholder="Address"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="updateImage" class="col-sm-5 col-form-label">Image</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="updateImage" formControlName="updateImage" placeholder="Image">
+          </div>
+        </div>
+      </div></div>
+    <div class="row button-align">
+      <div class="form-group">
+
+
+        <!--  <button class="btn btn-default" type="submit" [disabled]="!studentListForm.valid" (click)="addStudent(studentListForm)">
+            <i class="fa fa-floppy-o"></i>
+            Submit</button>
+          <button class="btn btn-default" type="button" (click)="resetForm(studentListForm)">
+            <i class="fa fa-repeat"></i>
+            Reset</button>-->
+      </div>
+
+    </div>
+    <!--  <div class="col-md-1"></div>-->
+  </form></div>
+  <p-footer>
+    <button mat-raised-button color="accent"  class="button-margin" [disabled]="!studentListForm.valid" (click)="updateStudent(studentListForm)">Update</button>
+    <button mat-raised-button color="accent" (click)="deleteStudent(studentListForm)">Delete</button>
+    <button mat-raised-button color="accent" (click)="studentDialog=false">Cancel</button>
+   <!-- <button type="button" pButton icon="pi pi-check" (click)="studentDialog=false" label="Yes"></button>
+    <button type="button" pButton icon="pi pi-close" (click)="studentDialog=false" label="No" class="ui-button-secondary"></button>-->
+  </p-footer>
+</p-dialog>
+

@@ -12,7 +12,9 @@ import {
   MatButtonModule,
   MatIconModule,
   MatSidenavModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTableModule,
+  MatCheckboxModule
 } from '@angular/material';
 import {AppComponent} from './app.component';
 import {AppConfig, APP_CONFIG} from './app.config';
@@ -20,6 +22,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
+import {DialogModule} from 'primeng/dialog';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
 import { StudentsComponent } from './students/students.component';
@@ -70,8 +73,11 @@ export function provideConfig() {
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatTableModule,
+    MatCheckboxModule,
     PanelMenuModule,
     SocialLoginModule,
+    DialogModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
 

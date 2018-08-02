@@ -3,6 +3,7 @@
 @import "~primeng/resources/themes/omega/theme.css";
 @import "~primeng/resources/primeng.min.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~primeicons/primeicons.css";
 @include mat-core();
 $primary: mat-palette($mat-cyan, 600);
 $accent: mat-palette($mat-green, 600, 100, 800);
@@ -11,23 +12,50 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
 
 .page-background{
-  background: linear-gradient(to left, #546E7A 51%, #424242 100%);
+  //background: linear-gradient(to left, #546E7A 51%, #424242 100%);
+//background: linear-gradient(to left, #00acc159 51%, #343b3e 100%);
 
 }
 
 .mat-drawer-container {
-  background: linear-gradient(to left, #546E7A 51%, #424242 100%);
+  //background: linear-gradient(to left, #546E7A 51%, #424242 100%);
+  //background: linear-gradient(to left, #00acc159 51%, #343b3e 100%);
   color: #fafafa;
 }
 .mat-toolbar.mat-primary {
-  background: linear-gradient(to left, #4b575c 51%, #5b889c 100%);
+  //background: linear-gradient(to left, #00acc159 51%, #343b3e 100%);
   color: white;
 }
 .card-design{
 
-  margin: 15px;
-  background :#78909C;
+  margin: 25px;
+  //background :#78909C;
+  //background: #78909c94;
+
   //border-radius: 30px;
 }
+.mat-icon-button:focus,.mat-icon-button:active {
+  outline: none !important;
+  box-shadow: none;
+}
+.mat-raised-button:focus,.mat-raised-button:active{
+  outline: none !important;
+  box-shadow: none;
+}
 
+.card-title-color{
+  color: #59d5e4;
+  font-family: serif;
+  margin-bottom: 5%;
+}
+.button-align{
+  margin-left: 43%;
+  margin-top: 25px;
+}
+tr.mat-row:hover {
+  background: linear-gradient(to left, #4b575c 51%, #5b889c 100%);
+}
+.mat-cell{
+  color: #59d5e4;
+}
 

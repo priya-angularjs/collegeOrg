@@ -17,10 +17,14 @@ studentList: Student[];
   ngOnInit() {
     this.studentForm = this.fb.group({
       name: [''],
-      department: [''],
-      gender: [''],
+      fatherName: [''],
       dob: [''],
-      age: ['']
+      gender: [''],
+      idProof: [''],
+      mobileNo: [''],
+      email: [''],
+      address: [''],
+      image: ['']
     });
     const x = this.studentService.getStudentList();
     console.log(x);

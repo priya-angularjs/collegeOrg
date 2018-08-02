@@ -1,8 +1,12 @@
 export class Student {
   $key: string;
   name: string;
-  department: string;
-  gender: string;
+  fatherName: string;
   dob: string;
-  age: string;
+  gender: string;
+  idProof: string;
+  mobileNo: string;
+  email: string;
+  address: string;
+  image: string;
 }

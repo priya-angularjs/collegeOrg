@@ -1,80 +1,83 @@
 <mat-card class="card-design">
-  <div>
+  <h3  class="card-title-color">Add Student Details</h3>
+  <div style="margin-left: 150px">
       <form [formGroup]="studentForm">
         <div class="row">
-          <div class="col-md-1"></div>
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="name" formControlName="name" placeholder="Name">
+            <label for="name" class="col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
             </div>
           </div>
           <div class="form-group row">
-            <label for="department" class="col-sm-2 col-form-label">Department</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="department"  formControlName="department" placeholder="Department">
+            <label for="fatherName" class="col-sm-3 col-form-label">Father's Name</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="fatherName"  formControlName="fatherName" placeholder="Father's Name">
             </div>
           </div>
           <div class="form-group row">
-            <label for="gender" class="col-sm-2 col-form-label">Gender</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="gender" formControlName="gender" placeholder="Gender">
+            <label for="dob" class="col-sm-3 col-form-label">DOB</label>
+            <div class="col-sm-6">
+              <input type="date" class="form-control" id="dob" formControlName="dob" placeholder="Date Of Birth">
             </div>
           </div>
           <div class="form-group row">
-            <label for="dob" class="col-sm-2 col-form-label">DOB</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="dob" formControlName="dob" placeholder="DOB">
+            <label for="gender" class="col-sm-3 col-form-label">Gender</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="gender" formControlName="gender" placeholder="Gender">
             </div>
           </div>
           <div class="form-group row">
-            <label for="age" class="col-sm-2 col-form-label">Age</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="age" formControlName="age" placeholder="Age">
+            <label for="idProof" class="col-sm-3 col-form-label">Id Proof</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="idProof" formControlName="idProof" placeholder="Name">
             </div>
           </div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="name" formControlName="name" placeholder="Name">
+            <label for="mobileNo" class="col-sm-3 col-form-label">Mobile Number</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="mobileNo" formControlName="mobileNo" placeholder="Mobile Number">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="email" class="col-sm-3 col-form-label">Email Address</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="email" formControlName="email" placeholder="Email Address">
             </div>
           </div>
           <div class="form-group row">
-            <label for="department" class="col-sm-2 col-form-label">Department</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="department"  formControlName="department" placeholder="Department">
+            <label for="address" class="col-sm-3 col-form-label">Address</label>
+            <div class="col-sm-6">
+              <textarea class="form-control" id="address" rows="3" formControlName="address" placeholder="Address"></textarea>
             </div>
           </div>
           <div class="form-group row">
-            <label for="gender" class="col-sm-2 col-form-label">Gender</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="gender" formControlName="gender" placeholder="Gender">
+            <label for="image" class="col-sm-3 col-form-label">Image</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="image" formControlName="image" placeholder="Image">
             </div>
           </div>
-          <div class="form-group row">
-            <label for="dob" class="col-sm-2 col-form-label">DOB</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="dob" formControlName="dob" placeholder="DOB">
+        </div></div>
+          <div class="row button-align">
+              <div class="form-group">
+                <button mat-raised-button color="primary" [disabled]="!studentForm.valid"
+                        class="button-margin" (click)="addStudent(studentForm)">Submit</button>
+                <button mat-raised-button color="accent" (click)="resetForm(studentForm)">Reset</button>
+              <!--  <button class="btn btn-default" type="submit" [disabled]="!studentForm.valid" (click)="addStudent(studentForm)">
+                  <i class="fa fa-floppy-o"></i>
+                  Submit</button>
+                <button class="btn btn-default" type="button" (click)="resetForm(studentForm)">
+                  <i class="fa fa-repeat"></i>
+                  Reset</button>-->
             </div>
+
           </div>
-          <div class="form-group row">
-            <label for="age" class="col-sm-2 col-form-label">Age</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="age" formControlName="age" placeholder="Age">
-            </div>
-          </div></div>
-          <div class="col-md-1"></div>
-        <div class="form-group">
-          <button class="btn btn-default" type="submit" [disabled]="!studentForm.valid" (click)="addStudent(studentForm)">
-            <i class="fa fa-floppy-o"></i>
-            Submit</button>
-          <button class="btn btn-default" type="button" (click)="resetForm(studentForm)">
-            <i class="fa fa-repeat"></i>
-            Reset</button>
-        </div></div></form></div></mat-card>
+        <!--  <div class="col-md-1"></div>-->
+       </form></div></mat-card>
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {AuthService} from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -13,11 +14,8 @@ export class MenuComponent implements OnInit {
   private user: SocialUser;
   private loggedIn: boolean;
 
-  constructor(private socialAuthService: AuthService) {
-    this.socialAuthService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-    });
+  constructor(private router: Router) {
+
 
   }
 
@@ -96,6 +94,6 @@ export class MenuComponent implements OnInit {
 
   }
     signOut(): void {
-      this.socialAuthService.signOut();
+      this.router.navigate(['/']);
   }
 }
