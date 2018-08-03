@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
 import { StudentsService} from '../../services/students.service';
 import {Student} from '../student.model';
-
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -11,6 +10,9 @@ import {Student} from '../student.model';
 export class StudentComponent implements OnInit {
   studentForm: FormGroup;
 studentList: Student[];
+  uploadedFiles = [];
+  imageUrl;
+  showImg = false;
   constructor(public studentService: StudentsService, private fb: FormBuilder) {
   }
 
@@ -40,13 +42,26 @@ studentList: Student[];
   }
   addStudent(model: FormGroup) {
       this.studentService.addStudent(model.value);
+    this.showImg = false;
+    this.imageUrl = '';
     this.studentForm.reset();
     console.log('Submitted Succcessfully', 'Student Register');
   }
 
+  onUpload(event) {
+    console.log(event);
+    this.studentForm.controls['image'].patchValue(event.files[0]);
+    this.imageUrl = event.files[0].objectURL;
+    if (this.imageUrl != null) {
+      this.showImg = true;
+    }
+    console.log(this.imageUrl);
+  }
   resetForm(model: FormGroup) {
     if (model != null) {
       this.studentForm.reset();
+      this.showImg = false;
+      this.imageUrl = '';
     }
   }
 }

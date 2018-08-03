@@ -1,21 +1,14 @@
-<mat-card class="card-design">
+<div style="margin:15px;">
   <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
 
 <table mat-table [dataSource]="studentList" class="mat-elevation-z8">
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef>
-    <!--  <mat-checkbox (change)="$event ? masterToggle() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()">
-      </mat-checkbox>-->
-    </th>
-    <td mat-cell *matCellDef="let row">
-      <!--<mat-checkbox (click)="$event.stopPropagation()"
-                    (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)">
-      </mat-checkbox>-->
+
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef> Image </th>
+    <td mat-cell *matCellDef="let element" >
+      <img src="assets/images/background-dark.jpg" class="image-thumbnail " alt="Avatar">
     </td>
   </ng-container>
 
@@ -62,9 +55,19 @@
   <th mat-header-cell *matHeaderCellDef> Address </th>
   <td mat-cell *matCellDef="let element"> {{element.address}} </td>
 </ng-container>
-  <ng-container matColumnDef="image">
-    <th mat-header-cell *matHeaderCellDef> Image </th>
-    <td mat-cell *matCellDef="let element"> {{element.image}} </td>
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <!--  <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>-->
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <!--<mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>-->
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -72,7 +75,7 @@
       (click)="selectRow(row)" [ngClass]="{'highlight': selectedRowIndex == row.$key}">
   </tr>
 </table>
-</mat-card>
+</div>
 
 <p-dialog header="Student List" [(visible)]="studentDialog" [modal]="true" [responsive]="true"
           [maximizable]="true" [baseZIndex]="10000" appendTo="body">
@@ -140,9 +143,10 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="updateImage" class="col-sm-5 col-form-label">Image</label>
+          <label class="col-sm-5 col-form-label">Image</label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" id="updateImage" formControlName="updateImage" placeholder="Image">
+            <img [src]="imageUrl" class="image-thumbnail" alt="Avatar">
+          <!--  <input type="text" class="form-control" id="updateImage" formControlName="updateImage" placeholder="Image">-->
           </div>
         </div>
       </div></div>
@@ -162,8 +166,8 @@
     <!--  <div class="col-md-1"></div>-->
   </form></div>
   <p-footer>
-    <button mat-raised-button color="accent"  class="button-margin" [disabled]="!studentListForm.valid" (click)="updateStudent(studentListForm)">Update</button>
-    <button mat-raised-button color="accent" (click)="deleteStudent(studentListForm)">Delete</button>
+    <button mat-raised-button color="primary"  class="button-align" [disabled]="!studentListForm.valid" (click)="updateStudent(studentListForm)">Update</button>
+    <button mat-raised-button color="warn"  class="button-align" (click)="deleteStudent(studentListForm)">Delete</button>
     <button mat-raised-button color="accent" (click)="studentDialog=false">Cancel</button>
    <!-- <button type="button" pButton icon="pi pi-check" (click)="studentDialog=false" label="Yes"></button>
     <button type="button" pButton icon="pi pi-close" (click)="studentDialog=false" label="No" class="ui-button-secondary"></button>-->

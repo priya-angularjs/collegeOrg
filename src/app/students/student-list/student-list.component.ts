@@ -3,6 +3,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import { StudentsService} from '../../services/students.service';
 import { Student} from '../student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-student-list',
@@ -10,19 +11,22 @@ import {FormBuilder, FormGroup} from '@angular/forms';
   styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'name', 'fatherName', 'dob', 'gender', 'idProof', 'mobileNo', 'email', 'address', 'image'];
+  displayedColumns: string[] = ['image','name','fatherName','dob','gender','idProof','mobileNo','email','address','select'];
   studentList = [];
   selection = new SelectionModel<any>(true, []);
   studentDialog = false;
   selectedRowIndex = -1;
   studentListForm: FormGroup;
+  imageUrl;
+  studentDetails = [];
   /** Whether the number of selected elements matches the total number of rows. */
 
 
   applyFilter(filterValue: string) {
     this.studentList[0].filter = filterValue.trim().toLowerCase();
   }
-  constructor(private studentsService: StudentsService, private fb: FormBuilder) { }
+  constructor(private studentsService: StudentsService, private fb: FormBuilder,
+              public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.studentListForm = this.fb.group({
@@ -40,14 +44,15 @@ export class StudentListComponent implements OnInit {
     const studentData = this.studentsService.getStudentList();
     studentData.snapshotChanges().subscribe(item => {
       this.studentList = [];
+      console.log(item);
       item.forEach(element => {
+        console.log(element);
         const student = element.payload.toJSON();
         student['$key'] = element.key;
         this.studentList.push(student as Student);
+        // console.log(element.payload.toJSON());
       });
-      console.log(this.studentList);
     });
-
   }
     isAllSelected() {
 
@@ -70,7 +75,8 @@ export class StudentListComponent implements OnInit {
       this.studentListForm.controls['updateMobileNo'].patchValue(row.mobileNo);
       this.studentListForm.controls['updateEmail'].patchValue(row.email);
       this.studentListForm.controls['updateAddress'].patchValue(row.address);
-      this.studentListForm.controls['updateImage'].patchValue(row.image);
+      this.imageUrl = row.image.objectURL;
+      this.studentListForm.controls['updateImage'].patchValue(this.imageUrl);
     }
   updateStudent(model: FormGroup) {
     console.log(model.value);
@@ -80,6 +86,10 @@ export class StudentListComponent implements OnInit {
   deleteStudent(model: FormGroup) {
     console.log(model.value);
     this.studentsService.deleteStudent(model.value.$key);
-    console.log('Deleted Succcessfully', 'Student Register');
+    this.studentDialog = false;
+  }
+  sanitizerUrl(imgUrl) {
+    console.log("tet");
+    // this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(imgUrl);
   }
 }

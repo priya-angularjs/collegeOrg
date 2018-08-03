@@ -58,8 +58,13 @@
           </div>
           <div class="form-group row">
             <label for="image" class="col-sm-3 col-form-label">Image</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="image" formControlName="image" placeholder="Image">
+            <div class="col-sm-3" style="margin-top: 25px;">
+              <p-fileUpload mode="basic" name="myfile[]" customUpload="true" [auto]="true"  (uploadHandler)="onUpload($event)">
+              </p-fileUpload>
+              <input type="text"  style="display: none;" class="form-control" id="image" formControlName="image"  placeholder="Image">
+            </div>
+            <div class="col-sm-1" *ngIf="showImg">
+              <img [src]="imageUrl" class="image-thumbnail" alt="Avatar">
             </div>
           </div>
         </div></div>

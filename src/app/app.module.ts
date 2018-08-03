@@ -23,6 +23,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {DialogModule} from 'primeng/dialog';
+import {FileUploadModule} from 'primeng/fileupload';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
 import { StudentsComponent } from './students/students.component';
@@ -78,6 +79,7 @@ export function provideConfig() {
     PanelMenuModule,
     SocialLoginModule,
     DialogModule,
+    FileUploadModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
 

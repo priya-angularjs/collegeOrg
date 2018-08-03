@@ -7,8 +7,15 @@ table {
   width: 100%;
 }
 .highlight{
-  background: linear-gradient(to left, #4b575c 51%, #5b889c 100%);
+  //background: linear-gradient(to left, #4b575c 51%, #5b889c 100%);
+  background: linear-gradient(to left, #bee6eb 51%, #bee6eb 100%);
 }
 .hidden{
   display: none;
 }
+.mat-header-cell {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(0, 172, 193) !important;
+}
+
